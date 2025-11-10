@@ -1,0 +1,95 @@
+import { ChevronRight, ChevronsRight, MapPin } from "lucide-react";
+import Image from "next/image";
+
+export default function Home() {
+
+  const procedures = [
+    {
+      name: "Обследование",
+      description: "Комплексная диагностика здоровья питомцев",
+      imagePath: "/drugs.webp",
+      link: "#"
+    },
+    {
+      name: "Срочная помощь",
+      description: "Экстренные выезды и оперативная помощь",
+      imagePath: "/happy.webp",
+      link: "#"
+    },
+    {
+      name: "Хирургия",
+      description: "Проведение операций любой сложности",
+      imagePath: "/surgery.webp",
+      link: "#"
+    },
+  ]
+
+  return (
+    <>
+      {/* Вступление */}
+      <section className="w-full pt-16 flex aspect-[4/3] bg-primary/10 relative">
+        <div className="p-4 w-[60%]">
+          <h1 className="text-lg font-extrabold leading-none pb-1">Забота о ваших петомцах</h1>
+          <p className="text-sm font-light">Мы предлогаем полный спктр ветеринарных услуг - от диагностики до профилактики и лечения</p>
+          <h4 className="flex gap-1 text-red-800 text-sm pt-2"><MapPin size={18} /> Тобол</h4>
+        </div>
+        <img className="absolute right-2 bottom-0 w-[50%]" src={"/dog3.webp"} alt="dog" />
+      </section>
+
+      {/* Услуги */}
+      <section className="w-full p-4 mt-6 ">
+        <h1 className="text-2xl font-bold flex"><div className="w-1 border-2 border-primary-dark/55 " />Наши услуги</h1>
+        
+        <div className="grid w-full grid-cols-1 gap-4 mt-4">
+          <div className="bg-gradient-to-b from-white to-gray-100 border-[0.5px] p-4 rounded-2xl shadow-lg ">
+            <p className=" text-center font-light">Наша клиника предоставляет широкий спектр ветеринарных услуг — от
+              профилактических
+              осмотров и вакцинации до
+              сложных диагностических и хирургических процедур.</p>
+          </div>
+          {procedures.map((procedure, index) => (
+            <div key={index} className=" p-4 rounded-2xl shadow-lg flex flex-col text-center  bg-gradient-to-b from-white to-gray-100 border-[0.5px] items-center relative">
+              <img src={procedure.imagePath} className="w-16" alt={procedure.name} />
+              <h1 className="text-primary-dark font-medium text-lg">{procedure.name}</h1>
+              <p className=" text-center font-light">{procedure.description}</p>
+              <ChevronRight size={15} className="absolute top-4 right-4" />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* О нас */}
+      <section className="my-12 flex flex-col items-center px-4 space-y-4 ">
+        <h1 className="text-2xl pt-10  mx-auto font-bold text-stone-800">О нашей клинике</h1>
+        <img src='/about.webp' className="w-full aspect-6/3" alt="" />
+        <div className="w-full aspect-6/2 px-4 pt-4 bg-stone-100  flex flex-col items-center shadow-lg">
+          <p className=" text-center font-light">Все услуги в одном месте — от прививок до операций</p>
+        </div>
+        <img src='/about2.webp' className="w-full aspect-6/3" alt="" />
+        <div className="w-full aspect-6/2 px-4 pt-4 bg-stone-100  flex flex-col items-center shadow-lg">
+          <p className=" text-center font-light">Высококвалифицированные специалисты с многолетним опытом</p>
+        </div>
+        <img src='/about3.webp' className="w-full aspect-6/3" alt="" />
+        <div className="w-full aspect-6/2 px-4 pt-4 bg-stone-100  flex flex-col items-center shadow-lg">
+          <p className=" text-center font-light">Современное оборудование и доказательные методы терапии</p>
+        </div>
+        <img src='/about4.webp' className="w-full aspect-6/3" alt="" />
+        <div className="w-full aspect-6/2 px-4 pt-4 bg-stone-100  flex flex-col items-center shadow-lg">
+          <p className=" text-center font-light">Оперативная помощь и забота о здоровье животных на всех этапах жизни</p>
+        </div>
+        <div className="w-full aspect-6/3 pt-4 flex justify-between">
+          <img src='/spec2.webp' className="w-[49%] object-cover max-h-full" alt="" />
+          <img src='/spec1.webp' className="w-[49%] object-cover max-h-full" alt="" />
+        </div>
+        <div className="w-full aspect-6/2 px-4 pt-4 bg-stone-100  flex flex-col items-center shadow-lg">
+          <p className=" text-center font-light">Высококвалифицированные специалисты с многолетним опытом</p>
+        </div>
+      </section>
+
+      <section className="w-full pt-16 h-[3000px] aspect-[4/3] grid grid-cols-1">
+
+      </section>
+    </>
+
+  );
+}

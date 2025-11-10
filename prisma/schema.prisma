@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model CategoryProcedure {
+  id         Int         @id @default(autoincrement())
+  imgUrl     String
+  name       String      @unique
+  procedures Procedure[]
+}
+
+model Procedure {
+  id                Int               @id @default(autoincrement())
+  name              String
+  price             Int
+  categoryId        Int
+  categoryProcedure CategoryProcedure @relation(fields: [categoryId], references: [id])
+}
