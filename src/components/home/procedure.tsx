@@ -12,6 +12,12 @@ interface ProcedureItem {
     name: string;
     price: number;
 }
+interface Category {
+    id: number;
+    name: string;
+    imgUrl: string;
+    procedures: ProcedureItem[];
+}
 
 export const Procedure: React.FC<Props> = ({ className }) => {
 
@@ -33,15 +39,15 @@ export const Procedure: React.FC<Props> = ({ className }) => {
         setShowId(prev => (prev === id ? null : id));
     };
 
-    const [list, setList] = React.useState<any[]>([]);
+    const [list, setList] = React.useState<Category[]>([]);
 
     React.useEffect(() => {
         const fetchData = async () => {
             try {
                 const categories = await Api.categoryProcedure.search();
 
-                const categoriesWithProcedures = await Promise.all(
-                    categories.map(async (item: any) => {
+                const categoriesWithProcedures: Category[] = await Promise.all(
+                    categories.map(async (item: {id: number; name: string; imgUrl: string}) => {
                         const procedures = await Api.procedure.search(item.id.toString());
                         return { ...item, procedures };
                     })
