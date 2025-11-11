@@ -7,7 +7,6 @@ interface Props {
 }
 
 
-
 export const About: React.FC<Props> = ({ className }) => {
 
   const variant: Variants = {
