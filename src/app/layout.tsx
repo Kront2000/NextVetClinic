@@ -36,11 +36,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth w-full overflow-x-hidden">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       </head>
-      <body className={`${rubik.className} antialiased`}>
+      <body className={`${rubik.className} antialiased w-full overflow-x-hidden`}>
         <main className="min-h-screen  w-full" >
           <Header />
           {children}
