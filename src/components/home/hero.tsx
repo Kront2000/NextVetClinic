@@ -46,7 +46,7 @@ export const Hero: React.FC<Props> = ({ className }) => {
     <motion.section className={cn('flex flex-col items-center overflow-hidden  w-full h-[950px] md:h-[550px] lg:h-[700px] xl:h-[770px] 2xl:h-[820px] relative p-6 lg:px-32 pt-16 bg-center bg-cover bg-[url(/bg.webp)] ', className)}>
 
       {/* Тайтл */}
-      <h1 className="mb-8 text-4xl font-medium text-center md:hidden">Забота о ваших петомцах</h1>
+      <h1 className="mb-8 text-4xl font-bold text-center md:hidden">Забота о ваших петомцах</h1>
 
 
       {/* Собака */}

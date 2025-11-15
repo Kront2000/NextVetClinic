@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 const nunito = Nunito({
   variable: "--font-nunito",
-  subsets: ["latin"],
+  subsets: ["latin", "cyrillic"],
   weight: ['400', '500', '600', '700', '800', '900'],
 });
 
@@ -40,8 +40,8 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       </head>
-      <body className={`${rubik.className} antialiased w-full overflow-x-hidden`}>
-        <main className="min-h-screen  w-full" >
+      <body className={`${nunito.className} antialiased w-full overflow-x-hidden`}>
+        <main className="min-h-screen  w-full " >
           <Header />
           {children}
           <Footer />
