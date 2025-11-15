@@ -28,7 +28,7 @@ export const About: React.FC<Props> = ({ className }) => {
     }
   }
 
-  let list = [
+  const list = [
     {
       text: "Мы делаем все, чтобы визит в клинику был максимально комфортным и безболезненным",
       src: "about-icon1.webp",
