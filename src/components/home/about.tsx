@@ -3,6 +3,8 @@ import { cn } from "@/lib/utils";
 import { motion, Variants } from "framer-motion";
 import { Roboto_Condensed } from "next/font/google";
 import { AboutText } from "./about-text";
+import { Container } from "../shared";
+
 
 interface Props {
   className?: string;
@@ -48,6 +50,7 @@ export const About: React.FC<Props> = ({ className }) => {
   ]
 
   return (
+    <Container>
     <div className="md:w-[768px] lg:w-[1024px] xl:w-[1280px] 2xl:w-[1536px] mx-auto">
       <motion.section className={cn('mt-20', className)}>
         <div className="p-4 sm:px-8">
@@ -77,6 +80,7 @@ export const About: React.FC<Props> = ({ className }) => {
         </div>
       </motion.section>
     </div>
+    </Container>
   );
 
 
