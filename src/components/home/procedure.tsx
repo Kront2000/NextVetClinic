@@ -3,6 +3,8 @@ import { cn } from "@/lib/utils";
 import { Button } from "../ui";
 import { Api } from "../../../service/api-client";
 import { delay, motion, scale, Variant, Variants } from "framer-motion";
+import { Roboto_Condensed } from "next/font/google";
+import { Container } from "../shared";
 
 interface Props {
     className?: string;
@@ -18,6 +20,12 @@ interface Category {
     imgUrl: string;
     procedures: ProcedureItem[];
 }
+
+const robotoCondensed = Roboto_Condensed({
+    variable: "--font-nunito",
+    subsets: ["latin", "cyrillic"],
+    weight: ['400', '500', '600', '700', '800', '900'],
+});
 
 export const Procedure: React.FC<Props> = ({ className }) => {
 
@@ -47,7 +55,7 @@ export const Procedure: React.FC<Props> = ({ className }) => {
                 const categories = await Api.categoryProcedure.search();
 
                 const categoriesWithProcedures: Category[] = await Promise.all(
-                    categories.map(async (item: {id: number; name: string; imgUrl: string}) => {
+                    categories.map(async (item: { id: number; name: string; imgUrl: string }) => {
                         const procedures = await Api.procedure.search(item.id.toString());
                         return { ...item, procedures };
                     })
@@ -65,39 +73,48 @@ export const Procedure: React.FC<Props> = ({ className }) => {
 
 
     return (
-        <section id="procedures" className={cn("grid w-full grid-cols-1 p-2 mt-6 md:px-8 md:mt-16 lg:px-20 xl:px-40 ", className)}>
-            <h1 className="my-2 text-5xl font-medium text-center">Наши услуги</h1>
-            <h1 className="mb-8 text-base font-light leading-none text-center">
-                нажмите на услугу, чтобы посмотреть описание
-            </h1>
-
-            <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 xl:gap-8">
-                {list.map((item, index) => (
-                    <motion.div custom={index} variants={variant} initial='hidden' whileInView='visible' key={item.id} onClick={() => toggleShowId(item.id)} className="w-full rounded-2xl cursor-pointer">
-                        <img src={item.imgUrl} alt="" className="object-cover w-full rounded-t-2xl aspect-[5/3]" />
-                        <Button className="w-full text-lg shadow-xl rounded-t-none">{item.name}</Button>
-                    </motion.div>
-                ))}
-
-
-                <div className={cn(showId === null ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto', "transition duration-300 z-50")}>
-                    <div
-                        onClick={() => toggleShowId(showId === null ? 0 : showId)}
-                        className="fixed top-0 left-0 w-screen h-screen bg-gray-600/40"
-                    />
-                    <div className="fixed flex flex-col items-center w-72 p-4 bg-white rounded-2xl left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <h1 className="mb-4 text-lg font-normal">{list.map((cat) => cat.id === showId ? cat.name : null)}</h1>
-                        {list.map((cat) => cat.id === showId ? cat.procedures.map((procedure: ProcedureItem) => (
-                            <div key={procedure.id} className="flex justify-between w-full mb-4 border-b">
-                                <p>{procedure.name}</p>
-                                <p>{procedure.price}</p>
-                            </div>
-                        )
-                        ) : null)}
+        <>
+            <img src="bg2.webp" className="w-full md:mt-16 mt-6" alt="" />
+            <section id="procedures" className={cn("grid w-full grid-cols-1 bg-primary-foreground pb-10", className)}>
+                <Container className="md:px-10">
+                    <div className="flex w-full flex-col md:flex-row md:justify-between md:items-start " >
+                        <h1 className={cn("md:w-[45%] my-2 text-left text-2xl xs:text-3xl sm:text-4xl xl:text-5xl font-extrabold leading-5 xs:leading-6 sm:leading-8 xl:leading-10 text-stone-800 text-shadow-lg", robotoCondensed)}>Услуги нашей<br /> <p className="text-blue-400">клиники</p></h1>
+                        <p className="w-[90%] md:w-[35%] xs:max-w-[70%] xl:w-[30%] text-xs xs:text-sm sm:text-base xl:text-xl  font-extralight text-stone-600 md:text-left md:pt-6">Нажмите на услугу, чтобы посмотреть описание</p>
                     </div>
-                </div>
 
-            </div>
-        </section>
+                    <div className="flex flex-col-reverse md:flex-row w-full gap-10 mt-16 md:mt-16">
+                        <img src="cat2.webp" className="w-[90%] md:w-[50%]" alt="" />
+
+                        <div className="grid grid-cols-2  gap-2 xl:gap-8 md:w-[50%] md:h-fit">
+                        {list.map((item, index) => (
+                            <motion.div custom={index} variants={variant} initial='hidden' whileInView='visible' key={item.id} onClick={() => toggleShowId(item.id)} className="w-full rounded-2xl cursor-pointer">
+                                <img src={item.imgUrl} alt="" className="object-cover w-full rounded-t-2xl aspect-[5/3]" />
+                                <Button className="w-full text-lg shadow-xl rounded-t-none bg-blue-400">{item.name}</Button>
+                            </motion.div>
+                        ))}
+
+
+                        <div className={cn(showId === null ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto', "transition duration-300 z-50")}>
+                            <div
+                                onClick={() => toggleShowId(showId === null ? 0 : showId)}
+                                className="fixed top-0 left-0 w-screen h-screen bg-gray-600/40"
+                            />
+                            <div className="fixed flex flex-col items-center w-72 p-4 bg-white rounded-2xl left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                                <h1 className="mb-4 text-lg font-normal">{list.map((cat) => cat.id === showId ? cat.name : null)}</h1>
+                                {list.map((cat) => cat.id === showId ? cat.procedures.map((procedure: ProcedureItem) => (
+                                    <div key={procedure.id} className="flex justify-between w-full mb-4 border-b">
+                                        <p>{procedure.name}</p>
+                                        <p>{procedure.price}</p>
+                                    </div>
+                                )
+                                ) : null)}
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    
+                </Container>
+            </section>
+        </>
     );
 };
