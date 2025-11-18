@@ -34,17 +34,18 @@ export const Footer: React.FC<Props> = ({ className }) => {
         rootMargin: '0px 0px -50px 0px',
     });
     return (
-        
+            
+
             <footer className="bg-blue-300">
                 <motion.footer
                     ref={ref}
-                    className={cn('bg-blue-400 py-4 px-4 lg:px-24 lg:pt-8 flex flex-col xl:flex-row md:items-start items-center m-0 lg:h-[25rem] md:h-100 md:mt-20 relative overflow-hidden', className)}
+                    className={cn('bg-blue-400   relative overflow-hidden', className)}
                     initial={{ clipPath: 'circle(0% at 50% 10%)' }}
                     animate={{ clipPath: inView ? 'circle(150% at 50% 10%)' : 'circle(0% at 50% 10%)' }}
                     transition={{ duration: 1, ease: 'easeInOut' }}
                 >
                     <Container>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full xl:grid-cols-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full xl:grid-cols-4 px-4">
                         <div className="flex gap-2 items-center md:mb-14 md:mt-6  ">
                             <Image width={35} height={35} alt="logo" src={'/pawprint.png'} className="xl:w-12 xl:h-12" />
                             <h1 className=" leading-none font-bold text-white xl:text-3xl xl:font-medium">ZOOVET<br />KONSALTING</h1>
@@ -70,8 +71,6 @@ export const Footer: React.FC<Props> = ({ className }) => {
                     </Container>
                 </motion.footer>
             </footer>
-        
-
-
+            
     );
 };

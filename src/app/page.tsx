@@ -15,7 +15,7 @@ export default function Home() {
       <About/>
       <Procedure/>
       <Reviews/>
-      <div className="h-[100px]"> </div>
+      
     </>
   );
 }

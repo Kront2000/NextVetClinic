@@ -5,6 +5,7 @@ import { Api } from "../../../service/api-client";
 import { delay, motion, scale, Variant, Variants } from "framer-motion";
 import { Roboto_Condensed } from "next/font/google";
 import { Container } from "../shared";
+import Image from "next/image";
 
 interface Props {
     className?: string;
@@ -76,7 +77,7 @@ export const Procedure: React.FC<Props> = ({ className }) => {
         <>
             <img src="bg2.webp" className="w-full md:mt-16 mt-6" alt="" />
             <section id="procedures" className={cn("grid w-full grid-cols-1 bg-primary-foreground pb-10", className)}>
-                <Container className="md:px-10">
+                <Container className="md:px-10 px-5">
                     <div className="flex w-full flex-col md:flex-row md:justify-between md:items-start " >
                         <h1 className={cn("md:w-[45%] my-2 text-left text-2xl xs:text-3xl sm:text-4xl xl:text-5xl font-extrabold leading-5 xs:leading-6 sm:leading-8 xl:leading-10 text-stone-800 text-shadow-lg", robotoCondensed)}>Услуги нашей<br /> <p className="text-blue-400">клиники</p></h1>
                         <p className="w-[90%] md:w-[35%] xs:max-w-[70%] xl:w-[30%] text-xs xs:text-sm sm:text-base xl:text-xl  font-extralight text-stone-600 md:text-left md:pt-6">Нажмите на услугу, чтобы посмотреть описание</p>
@@ -88,7 +89,7 @@ export const Procedure: React.FC<Props> = ({ className }) => {
                         <div className="grid grid-cols-2  gap-2 xl:gap-8 md:w-[50%] md:h-fit">
                         {list.map((item, index) => (
                             <motion.div custom={index} variants={variant} initial='hidden' whileInView='visible' key={item.id} onClick={() => toggleShowId(item.id)} className="w-full rounded-2xl cursor-pointer">
-                                <img src={item.imgUrl} alt="" className="object-cover w-full rounded-t-2xl aspect-[5/3]" />
+                                <Image alt={item.name} width={164} height={98} src={"/" + item.imgUrl} className="object-cover w-full rounded-t-2xl aspect-[5/3]" />
                                 <Button className="w-full text-lg shadow-xl rounded-t-none bg-blue-400">{item.name}</Button>
                             </motion.div>
                         ))}

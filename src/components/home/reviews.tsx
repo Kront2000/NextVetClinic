@@ -66,7 +66,7 @@ export const Reviews: React.FC<Props> = ({ className }) => {
                         {list.map((elem, index) => (
                             <CarouselItem key={index} className="flex items-center ">
                             <div className="flex items-center mx-auto bg-blue-400 rounded-2xl p-4">
-                                <img src={elem.src} className="rounded-2xl" alt="" />
+                                <img src={elem.src} loading="lazy" className="rounded-2xl" alt="" />
                             </div>
                         </CarouselItem>
                         ))}
