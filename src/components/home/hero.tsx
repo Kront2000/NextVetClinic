@@ -57,7 +57,7 @@ export const Hero: React.FC<Props> = ({ className }) => {
       <motion.section className={cn('flex flex-col items-center w-full bg-primary-foreground pt-30 md:pt-0 pb-10 xs:pb-14 md:pb-0 lg:pt-10', className)}>
         <Container>
           <div className="w-full flex flex-col md:flex-row-reverse gap-4 md:translate-y-28">
-            <Image alt="dog" width={2367} height={2792} src="/dog4.webp" className="w-[90%] md:w-[50%] mx-auto md:col-start-2 " />
+            <Image alt="dog" width={370} height={426} src="/dog4.webp" className="w-[90%] md:w-[50%] mx-auto md:col-start-2 " />
 
             {/* ЗАГОЛОВОК  */}
             <div className="flex flex-col gap-6 sm:gap-12 md:gap-6 xl:gap-12 md:col-start-1 md:w-[65%] md:pt-2 lg:pt-10 md:pl-10 ">

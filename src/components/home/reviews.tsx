@@ -62,7 +62,6 @@ export const Reviews: React.FC<Props> = ({ className }) => {
             <div className="w-full flex flex-col items-center p-6 ">
                 <Carousel className="w-[80%] max-w-xl">
                     <CarouselContent>
-
                         {list.map((elem, index) => (
                             <CarouselItem key={index} className="flex items-center ">
                             <div className="flex items-center mx-auto bg-blue-400 rounded-2xl p-4">
@@ -70,8 +69,6 @@ export const Reviews: React.FC<Props> = ({ className }) => {
                             </div>
                         </CarouselItem>
                         ))}
-                        
-                        
                     </CarouselContent>
                     <CarouselPrevious />
                     <CarouselNext />
