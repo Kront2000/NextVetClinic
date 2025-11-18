@@ -84,7 +84,8 @@ export const Procedure: React.FC<Props> = ({ className }) => {
                     </div>
 
                     <div className="flex flex-col-reverse md:flex-row w-full gap-10 mt-16 md:mt-16">
-                        <img src="cat2.webp" className="w-[90%] md:w-[50%]" alt="" />
+                        
+                        <Image alt="Кот" width={164} height={98} src="cat2.webp" className="w-[90%] md:w-[50%]" />
 
                         <div className="grid grid-cols-2  gap-2 xl:gap-8 md:w-[50%] md:h-fit">
                         {list.map((item, index) => (

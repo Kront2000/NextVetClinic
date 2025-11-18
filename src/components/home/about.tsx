@@ -74,13 +74,13 @@ export const About: React.FC<Props> = ({ className }) => {
 
             {/* БЛОК с КАРТИНКАМИ */}
             <div className="grid w-full grid-cols-1 md:grid-cols-2 gap-6 md:gap-2 px-2 md:w-[70%] lg:w-[65%] 2xl:w-[55%] h-fit items-end ">
-              <Image alt="about" width={364} height={546} src="/about.webp" className="w-full aspect-2/3 object-cover rounded-2xl shadow-2xl" />
+              <Image alt="about" width={3000} height={2000} src="/about.webp" className="w-full aspect-2/3 object-cover rounded-2xl shadow-2xl" />
               <div className=" flex flex-col gap-2 w-full">
                 <div className="grid grid-cols-2 gap-2 w-full">
-                  <Image alt="about-5" width={178} height={178} src="/spec5.webp" className="w-full aspect-square object-cover rounded-4xl shadow-2xl" />
-                  <Image alt="about-6" width={178} height={178} src="/spec6.webp" className="w-full aspect-square object-cover rounded-4xl shadow-2xl" />
+                  <Image alt="about-5" width={1000} height={1000} src="/spec5.webp" className="w-full aspect-square object-cover rounded-4xl shadow-2xl" />
+                  <Image alt="about-6" width={1000} height={1000} src="/spec6.webp" className="w-full aspect-square object-cover rounded-4xl shadow-2xl" />
                 </div>
-                <Image alt="about-2" width={364} height={242} src="/about2.webp" className="w-full  aspect-3/2 object-cover rounded-2xl shadow-2xl" />
+                <Image alt="about-2" width={2000} height={1000} src="/about2.webp" className="w-full  aspect-3/2 object-cover rounded-2xl shadow-2xl" />
               </div>
 
             </div>
