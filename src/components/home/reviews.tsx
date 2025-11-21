@@ -57,7 +57,7 @@ export const Reviews: React.FC<Props> = ({ className }) => {
     ]
 
     return (
-        <section id="reviews" className={cn('flex flex-col  w-full py-12 mt-20 md:mt-32', className)}>
+        <section id="reviews" className={cn('flex flex-col  w-full py-12 mt-20 md:mt-32 xl:mb-48', className)}>
             <Container className="w-full px-4">
                 <Title mainText="Отзывы наших" mainTextBlue="клиентов" smallText="Больше отзывов у нас в 2gis" />
             </Container>
