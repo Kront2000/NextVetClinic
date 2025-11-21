@@ -4,8 +4,9 @@ import { Button } from "../ui";
 import { Api } from "../../../service/api-client";
 import { delay, motion, scale, Variant, Variants } from "framer-motion";
 import { Roboto_Condensed } from "next/font/google";
-import { Container } from "../shared";
+import { Container, Title } from "../shared";
 import Image from "next/image";
+import { useInView } from "react-intersection-observer";
 
 interface Props {
     className?: string;
@@ -30,17 +31,6 @@ const robotoCondensed = Roboto_Condensed({
 
 export const Procedure: React.FC<Props> = ({ className }) => {
 
-    const variant: Variants = {
-        hidden: {
-            opacity: 0,
-            scale: 1.2,
-        },
-        visible: (custom: number) => ({
-            opacity: 1,
-            scale: 1,
-            transition: { delay: custom * 0.2, duration: 0.5, type: 'tween' },
-        })
-    }
 
     const [showId, setShowId] = React.useState<number | null>(null);
 
@@ -72,27 +62,35 @@ export const Procedure: React.FC<Props> = ({ className }) => {
         fetchData()
     }, [])
 
+    const { ref: refCat, inView: inViewCat } = useInView({
+        threshold: 0.5,
+        triggerOnce: true,
+    });
+    const { ref: refProcedure, inView: inViewProcedure } = useInView({
+        threshold: 0.5,
+        triggerOnce: true,
+    });
+
+    const delays = ["delay-0", "delay-150", "delay-300", "delay-500", "delay-600", "delay-700", "delay-800", "delay-900", "delay-1000"];
 
     return (
         <>
             <img src="bg2.webp" className="w-full md:mt-16 mt-6" alt="" />
             <section id="procedures" className={cn("grid w-full grid-cols-1 bg-primary-foreground pb-10", className)}>
                 <Container className="md:px-10 px-5">
-                    <div className="flex w-full flex-col md:flex-row md:justify-between md:items-start " >
-                        <h1 className={cn("md:w-[45%] my-2 text-left text-2xl xs:text-3xl sm:text-4xl xl:text-5xl font-extrabold leading-5 xs:leading-6 sm:leading-8 xl:leading-10 text-stone-800 text-shadow-lg", robotoCondensed)}>Услуги нашей<br /> <p className="text-blue-400">клиники</p></h1>
-                        <p className="w-[90%] md:w-[35%] xs:max-w-[70%] xl:w-[30%] text-xs xs:text-sm sm:text-base xl:text-xl  font-extralight text-stone-600 md:text-left md:pt-6">Нажмите на услугу, чтобы посмотреть описание</p>
-                    </div>
+                    
+                    <Title mainText="Услуги нашей" mainTextBlue="клиники" smallText="Нажмите на услугу, чтобы посмотреть описание"/>
 
                     <div className="flex flex-col-reverse md:flex-row w-full gap-10 mt-16 md:mt-16">
                         
-                        <Image alt="Кот" width={164} height={98} src="cat2.webp" className="w-[90%] md:w-[50%]" />
+                        <Image ref={refCat} alt="Кот" width={2675} height={2679} src="/cat2.webp" className={cn("w-[90%] md:w-[50%] transition duration-500 ease-in-out", inViewCat ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-3")} />
 
-                        <div className="grid grid-cols-2  gap-2 xl:gap-8 md:w-[50%] md:h-fit">
+                        <div ref={refProcedure} className="grid grid-cols-2  gap-2 xl:gap-8 md:w-[50%] md:h-fit">
                         {list.map((item, index) => (
-                            <motion.div custom={index} variants={variant} initial='hidden' whileInView='visible' key={item.id} onClick={() => toggleShowId(item.id)} className="w-full rounded-2xl cursor-pointer">
+                            <div key={item.id} onClick={() => toggleShowId(item.id)} className={cn("w-full rounded-2xl cursor-pointer transition duration-500", delays[index], inViewProcedure ? "opacity-100 scale-100" : "opacity-0 -scale-50")}>
                                 <Image alt={item.name} width={164} height={98} src={"/" + item.imgUrl} className="object-cover w-full rounded-t-2xl aspect-[5/3]" />
                                 <Button className="w-full text-lg shadow-xl rounded-t-none bg-blue-400">{item.name}</Button>
-                            </motion.div>
+                            </div>
                         ))}
 
 

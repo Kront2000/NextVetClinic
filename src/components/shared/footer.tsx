@@ -32,6 +32,8 @@ export const Footer: React.FC<Props> = ({ className }) => {
     const { ref, inView } = useInView({
 
         rootMargin: '0px 0px -50px 0px',
+        triggerOnce: true,
+        
     });
     return (
             
@@ -43,10 +45,11 @@ export const Footer: React.FC<Props> = ({ className }) => {
                     initial={{ clipPath: 'circle(0% at 50% 10%)' }}
                     animate={{ clipPath: inView ? 'circle(150% at 50% 10%)' : 'circle(0% at 50% 10%)' }}
                     transition={{ duration: 1, ease: 'easeInOut' }}
+                    
                 >
-                    <Container>
+                    <Container className="pt-10">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full xl:grid-cols-4 px-4">
-                        <div className="flex gap-2 items-center md:mb-14 md:mt-6  ">
+                        <div className="flex gap-2 items-center md:mb-8 md:mt-6  ">
                             <Image width={35} height={35} alt="logo" src={'/pawprint.png'} className="xl:w-12 xl:h-12" />
                             <h1 className=" leading-none font-bold text-white xl:text-3xl xl:font-medium">ZOOVET<br />KONSALTING</h1>
                         </div>

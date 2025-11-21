@@ -7,8 +7,9 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
-import { Container } from "../shared";
+import { Container, Title } from "../shared";
 import { Roboto_Condensed } from "next/font/google";
+import { useInView } from "react-intersection-observer";
 
 interface Props {
     className?: string;
@@ -21,6 +22,11 @@ const robotoCondensed = Roboto_Condensed({
 });
 
 export const Reviews: React.FC<Props> = ({ className }) => {
+
+    const { ref, inView } = useInView({
+            threshold: 0.5,
+            triggerOnce: true,
+        });
 
     const list = [
         {
@@ -53,21 +59,18 @@ export const Reviews: React.FC<Props> = ({ className }) => {
     return (
         <section id="reviews" className={cn('flex flex-col  w-full py-12 mt-20 md:mt-32', className)}>
             <Container className="w-full px-4">
-                <div className="flex w-full flex-col md:flex-row md:justify-between md:items-start " >
-                    <h1 className={cn("md:w-[45%] my-2 text-left text-2xl xs:text-3xl sm:text-4xl xl:text-5xl font-extrabold leading-5 xs:leading-6 sm:leading-8 xl:leading-10 text-stone-800 text-shadow-lg", robotoCondensed)}>Отзывы наших<br /> <p className="text-blue-400">клиентов</p></h1>
-                    <p className="w-[90%] md:w-[35%] xs:max-w-[70%] xl:w-[30%] text-xs xs:text-sm sm:text-base xl:text-xl  font-extralight text-stone-600 md:text-left md:pt-6">Больше отзывов у нас в <a className="text-blue-500 underline decoration-solid" href="https://go.2gis.com/81Tsk">2gis</a></p>
-                </div>
+                <Title mainText="Отзывы наших" mainTextBlue="клиентов" smallText="Больше отзывов у нас в 2gis" />
             </Container>
 
-            <div className="w-full flex flex-col items-center p-6 ">
-                <Carousel className="w-[80%] max-w-xl">
+            <div ref={ref} className="w-full flex flex-col items-center p-6 ">
+                <Carousel className={cn("w-[80%] max-w-xl transition duration-500 ease-in-out", inView ? "opacity-100 translate-0" : "opacity-0 translate-y-4")}>
                     <CarouselContent>
                         {list.map((elem, index) => (
                             <CarouselItem key={index} className="flex items-center ">
-                            <div className="flex items-center mx-auto bg-blue-400 rounded-2xl p-4">
-                                <img src={elem.src} loading="lazy" className="rounded-2xl" alt="" />
-                            </div>
-                        </CarouselItem>
+                                <div className="flex items-center mx-auto bg-blue-400 rounded-2xl p-4">
+                                    <img src={elem.src} loading="lazy" className="rounded-2xl" alt="Отзыв" />
+                                </div>
+                            </CarouselItem>
                         ))}
                     </CarouselContent>
                     <CarouselPrevious />
