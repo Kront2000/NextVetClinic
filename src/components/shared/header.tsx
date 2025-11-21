@@ -18,8 +18,8 @@ export const Header: React.FC<Props> = ({ className }) => {
         <header className={cn('flex justify-between px-4 lg:px-32 rounded-b-2xl z-50 py-2 fixed w-full top-0 shadow-xl bg-white/30 backdrop-blur-2xl', className)}>
             {/* Левая часть */}
             <div className="flex gap-2 items-center">
-                <div  className="aspect-square w-12 h-auto lg:w-16 relative"><Image fill alt="logo" src={'/logo123.webp'} /></div>
-                <h1 className=" leading-none font-bold lg:text-3xl text-secodnary">ZOOVET<br />KONSALTING</h1>
+                <div  className="aspect-square w-12 h-auto lg:w-20 relative"><Image width={321} height={321} alt="logo" src={'/logo7.webp'} /></div>
+                <h1 className=" leading-none font-bold lg:text-3xl text-secondary">ZOOVET<br /><p className="text-blue-400">KONSALTING</p></h1>
             </div>
             {/* Правая часть */}
             {/* Бургер */}

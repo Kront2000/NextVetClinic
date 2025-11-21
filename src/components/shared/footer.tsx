@@ -50,8 +50,8 @@ export const Footer: React.FC<Props> = ({ className }) => {
                     <Container className="pt-10">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full xl:grid-cols-4 px-4">
                         <div className="flex gap-2 items-center md:mb-8 md:mt-6  ">
-                            <Image width={35} height={35} alt="logo" src={'/pawprint.png'} className="xl:w-12 xl:h-12" />
-                            <h1 className=" leading-none font-bold text-white xl:text-3xl xl:font-medium">ZOOVET<br />KONSALTING</h1>
+                            <Image width={321} height={321} alt="logo" src={'/logo5-neg.webp'} className="w-10 h-10 xl:w-16 xl:h-16" />
+                            <h1 className=" leading-none font-bold text-white xl:text-2xl xl:font-medium">ZOOVET<br />KONSALTING</h1>
                         </div>
                         <div className="md:row-start-2 md:row-end-3 xl:row-start-auto xl:row-end-auto xl:mt-20">
                             <h1 className="text-lg py-2 font-semibold text-white ">Адрес</h1>
