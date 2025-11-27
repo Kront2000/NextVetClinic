@@ -38,7 +38,7 @@ export const LoginForm: React.FC<Props> = ({ className }) => {
 
     return (
         <Container className="py-96 items-center">
-            <div className="border-2 border-blue-500 rounded-2xl mx-auto w-[40%] p-4">
+            <div className="border-2 border-blue-500 rounded-2xl mx-auto w-[70%] sm:w-[40%]  p-4">
                 <h1 className="text-center text-2xl xs:text-3xl sm:text-4xl xl:text-5xl font-extrabold text-stone-800">
                     Авторизация
                 </h1>
