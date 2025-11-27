@@ -83,7 +83,7 @@ export const Procedure: React.FC<Props> = ({ className }) => {
 
                     <div className="flex flex-col-reverse md:flex-row w-full gap-10 mt-16 md:mt-16">
                         
-                        <Image ref={refCat} alt="Кот" width={2675} height={2679} src="/cat2.webp" className={cn("w-[90%] md:w-[50%] transition duration-500 ease-in-out", inViewCat ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-3")} />
+                        <Image ref={refCat} alt="Кот" width={2675} height={2679} src="/cat2.webp" className={cn("w-[90%] md:w-[50%] h-fit transition duration-500 ease-in-out", inViewCat ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-3")} />
 
                         <div ref={refProcedure} className="grid grid-cols-2  gap-2 xl:gap-8 md:w-[50%] md:h-fit">
                         {list.map((item, index) => (
