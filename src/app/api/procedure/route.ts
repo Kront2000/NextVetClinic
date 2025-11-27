@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "../../../../prisma/prisma-client";
+import { Prisma } from "@prisma/client";
 
 export async function POST(req: Request) {
     const data = await req.formData();
@@ -57,7 +58,7 @@ export async function PUT(req: Request) {
             return NextResponse.json({ error: "Name is required" }, { status: 400 });
         }
 
-        const updateData: any = { name, price };
+        const updateData: Prisma.ProcedureUpdateInput = { name, price };
 
         console.log(updateData);
         const procedure = await prisma.procedure.update({

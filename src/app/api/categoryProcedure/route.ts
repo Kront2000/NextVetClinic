@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import { prisma } from "../../../../prisma/prisma-client"
 import { NextApiRequest, NextApiResponse } from "next";
-import app from "next/app";
+import { Prisma } from "@prisma/client";
 import { Api } from "../../../../service/api-client";
 
 export async function GET() {
@@ -62,7 +62,7 @@ export async function PUT(req: Request) {
             return NextResponse.json({ error: "Name is required" }, { status: 400 });
         }
 
-        const updateData: any = { name };
+        const updateData: Prisma.CategoryProcedureUpdateInput = { name };
 
         // Если юзер загрузил новое фото — загружаем и обновляем
         if (image && image.size > 0) {
