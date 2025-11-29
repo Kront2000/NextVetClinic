@@ -31,7 +31,7 @@ export const DeleteCategoryProcedureForm: React.FC<Props> = ({ className, modalT
 
     async function handleDeleteCategory(id: number | undefined) {
         setIsLoading(true)
-        const response = await fetch("/api/categoryProcedure", { method: "DELETE", body: JSON.stringify({ id }) });
+        const response = await fetch("/api/admin/categoryProcedure", { method: "DELETE", body: JSON.stringify({ id }) });
         if (response.ok) {
             setIsLoading(false)
             alert("Категория удалена");

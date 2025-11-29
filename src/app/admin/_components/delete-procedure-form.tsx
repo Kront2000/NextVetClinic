@@ -31,7 +31,7 @@ export const DeleteProcedureForm: React.FC<Props> = ({ className, modalType, set
 
     async function handleDeleteProcedure(id: number | undefined) {
         setIsLoading(true);
-        const response = await fetch("/api/procedure", { method: "DELETE", body: JSON.stringify({ id }) });
+        const response = await fetch("/api/admin/procedure", { method: "DELETE", body: JSON.stringify({ id }) });
         setModalType(null);
         if(response.ok){
             setModalType(null);

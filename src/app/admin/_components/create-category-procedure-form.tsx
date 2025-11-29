@@ -52,7 +52,7 @@ export const CreateCategoryProcedureForm: React.FC<Props> = ({ className, modalT
         />
         <div className="fixed flex flex-col items-center w-72 p-4 bg-white rounded-2xl left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <h1 className="mb-4 text-lg font-normal ">Добавить категорию</h1>
-          <form onSubmit={(e) => onSubmit(e, '/api/categoryProcedure')} className="flex flex-col w-full items-center gap-8" action="">
+          <form onSubmit={(e) => onSubmit(e, '/api/admin/categoryProcedure')} className="flex flex-col w-full items-center gap-8" action="">
             <div className="flex flex-col items-center w-full">
               <h3 className="text-center">Введите название</h3>
               <input type="text" className="border-1 w-full rounded-lg" name="name" />

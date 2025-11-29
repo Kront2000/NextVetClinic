@@ -66,7 +66,7 @@ export const EditCategoryProcedureForm: React.FC<Props> = ({ className, modalTyp
                 />
                 <div className="fixed flex flex-col items-center w-72 p-4 bg-white rounded-2xl left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                     <h1 className="mb-4 text-lg font-normal ">Редактировать категорию</h1>
-                    <form onSubmit={(e) => onSubmit(e, '/api/categoryProcedure?id=' + selectedCategory?.id)} className="flex flex-col w-full items-center gap-8" action="">
+                    <form onSubmit={(e) => onSubmit(e, '/api/admin/categoryProcedure?id=' + selectedCategory?.id)} className="flex flex-col w-full items-center gap-8" action="">
                         <div className="flex flex-col w-full items-center">
                             <h3 className="text-center">Название</h3>
                             <input type="text" className="border-1 rounded-lg w-full"  defaultValue={selectedCategory?.name ?? ""} name="name" />

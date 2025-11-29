@@ -32,7 +32,12 @@ export const LoginForm: React.FC<Props> = ({ className }) => {
         if (response.ok) {
             window.location.href = "/admin";
         } else {
-            alert("Неправильный логин или пароль");
+            try {
+                const data = await response.json();
+                alert(data.error);
+            } catch {
+                alert("Ошибка авторизации");
+            }
         }
     }
 
